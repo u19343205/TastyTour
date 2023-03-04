@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.tastytour.databinding.ActivityMainBinding
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,5 +32,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Finish the current activity to prevent going back to login screen on back press
         }
+
+
+        }
+
+
     }
-}
+

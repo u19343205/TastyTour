@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:title="Home"
+            android:id="@+id/home"
+            android:icon ="@drawable/baseline_home_24" />
+        <item android:title="Search"
+            android:id="@+id/search"
+            android:icon ="@drawable/baseline_search_24"
+            />
+        <item android:title="Saved"
+            android:id="@+id/saved"
+            android:icon ="@drawable/baseline_favorite_border_24"
+            />
+        <item android:title="Reservations"
+            android:id="@+id/reservations"
+            android:icon ="@drawable/baseline_calendar_month_24"
+            />
+        <item android:title="Deals"
+            android:id="@+id/deals"
+            android:icon ="@drawable/baseline_whatshot_24"
+            />
+    </menu>
