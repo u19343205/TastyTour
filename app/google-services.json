@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "696305693115",
+    "project_id": "tastytourdatabase",
+    "storage_bucket": "tastytourdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696305693115:android:df3b810f94e357213a149e",
+        "android_client_info": {
+          "package_name": "com.example.tastytour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696305693115-qcudctm1sm0vfp9s8426l38jb9rnnoss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZv78gfgalWypXkefuCProW9upu9xUIZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696305693115-qcudctm1sm0vfp9s8426l38jb9rnnoss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
