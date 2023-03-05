@@ -20,10 +20,10 @@ class LoginActivity : AppCompatActivity() {
 
 
         binding.loginButton.setOnClickListener {
-            if (binding.emailLogin.text.isNullOrBlank() && binding.passwordLogin.text.isNullOrBlank()) {
+            if (binding.emailEt.text.isNullOrBlank() && binding.passwordEt.text.isNullOrBlank()) {
                 Toast.makeText(this, "Please fill the required details", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "${binding.emailLogin.text} is logged in", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "${binding.emailEt.text} is logged in", Toast.LENGTH_SHORT)
                     .show()
             }
             // Move to homepage
