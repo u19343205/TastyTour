@@ -8,6 +8,7 @@ import android.util.Patterns
 import android.widget.Toast
 import com.example.tastytour.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 
 class LoginActivity : AppCompatActivity() {
@@ -78,11 +79,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 // Move to homepage
                 //show progress
-                progressDialog.dismiss()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                finish() //
-
+                checkUser()
             }
             .addOnFailureListener{ e->
                 //failed
@@ -92,8 +89,45 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+    private fun checkUser() {
+        progressDialog.setMessage("Checking User..")
 
-}
+        val firebaseUser = firebaseAuth.currentUser!!
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseUser.uid)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+                override fun onDataChange(snapshot: DataSnapshot){
+                    progressDialog.dismiss()
+                    val userType = snapshot.child("userType").value
+                    if(userType =="user"){
+
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish() //
+
+                    }
+                    else if (userType =="admin"){
+
+                        val intent = Intent(this@LoginActivity, AdminActivity::class.java)
+                        startActivity(intent)
+                        finish() //
+
+                    }
+
+                }
+
+            })
+
+    }
+    }
+
+
+
 
 
 

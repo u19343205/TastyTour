@@ -117,6 +117,7 @@ class RegisterActivity : AppCompatActivity() {
         hashMap["name"] = name
         hashMap["email"] = email
         hashMap["profileImage"] = "" //add as empty can be edited in profile
+        hashMap["userType"] = "user" //admin or user
         hashMap["timestamp"] = timestamp
 
         //upload data into database
@@ -135,8 +136,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this,"Failed to add user due to ${e.message}",Toast.LENGTH_SHORT).show()
 
             }
-
-
 
 
 

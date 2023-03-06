@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.tastytour.databinding.ActivityHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -34,10 +36,22 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
-        binding.addButton.setOnClickListener{
-            val intent = Intent(this, AddActivity::class.java)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        checkUser()
+
+    }
+
+    private fun checkUser() {
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser == null) {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish() //
+
+        } else {
+            val name = firebaseUser.displayName
+            binding.nameTv.text = name
         }
     }
 
