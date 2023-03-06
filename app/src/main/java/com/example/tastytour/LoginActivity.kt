@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
 
     private var email = ""
     private var password = ""
-
     private fun validateData() {
         //input data
         email = binding.emailEt.text.toString().trim()
@@ -75,12 +74,10 @@ class LoginActivity : AppCompatActivity() {
     private fun LoginUser() {
         progressDialog.setMessage("Logging In..")
         progressDialog.show()
-
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 // Move to homepage
                 //show progress
-
                 progressDialog.dismiss()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
@@ -91,7 +88,6 @@ class LoginActivity : AppCompatActivity() {
                 //failed
                 progressDialog.dismiss()
                 Toast.makeText(this,"Login failed due to ${e.message}",Toast.LENGTH_SHORT).show()
-
 
             }
     }

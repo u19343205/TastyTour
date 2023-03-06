@@ -1,5 +1,6 @@
 package com.example.tastytour
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,6 +33,11 @@ class HomeActivity : AppCompatActivity() {
 
             }
             true
+        }
+        binding.addButton.setOnClickListener{
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+            finish() //
         }
     }
 

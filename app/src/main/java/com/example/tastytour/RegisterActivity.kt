@@ -49,8 +49,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener{
 
             validateData()
-
-
         }
     }
     private var name = ""
@@ -73,21 +71,17 @@ class RegisterActivity : AppCompatActivity() {
         else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             //invalid email address
             Toast.makeText(this,"Invalid Email",Toast.LENGTH_SHORT).show()
-
         }
         else if(password.isEmpty()){
             //password is blank
             Toast.makeText(this,"Enter Password",Toast.LENGTH_SHORT).show()
-
         }
         else if (password != cPassword){
             Toast.makeText(this,"Passwords don't match",Toast.LENGTH_SHORT).show()
-
         }
         else{
             createuserAccount()
         }
-
     }
 
     private fun createuserAccount() {
@@ -106,7 +100,6 @@ class RegisterActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this,"Failed to create account due to ${e.message}",Toast.LENGTH_SHORT).show()
             }
-
     }
     //save user info
     private fun updateUserInfo() {
@@ -134,8 +127,6 @@ class RegisterActivity : AppCompatActivity() {
                 //user added
                 progressDialog.dismiss()
                 Toast.makeText(this,"Account created",Toast.LENGTH_SHORT).show()
-
-
             }
             .addOnFailureListener{e ->
                 //failed to add user
