@@ -1,18 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/grey"
     tools:context=".DealsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/dealsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deals"
-        android:textSize="26dp"
-        android:layout_gravity="center"
-        />
+        android:layout_marginTop="5dp"
+        android:text="Hot New Deals"
+        android:padding="10dp"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+
+    <Button
+        android:id="@+id/profileutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="8dp"
+        android:text="JD"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:background="@drawable/profile_circle"/>
+
+    <TextView
+        android:id="@+id/nearTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dealsTv"
+        android:text="Restaurants Near"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/locationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dealsTv"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="6dp"
+        android:text="Current Location"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:textColor="@color/darkgrey" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restaurantsRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/locationTv"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/deals_restuarant" />
+
+</RelativeLayout>
