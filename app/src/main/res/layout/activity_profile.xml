@@ -115,29 +115,31 @@
         android:textSize="18dp"
         android:textColor="@color/black"/>
 
-    <Button
+    <EditText
         android:id="@+id/optionstv"
         android:layout_width="90dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:padding="20dp"
-        android:text="Vegan"
         android:layout_below="@id/preferencestv"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:text="Vegan"
         android:textSize="10dp"
         android:background="@drawable/shape_button3"/>
-    <Button
+
+    <EditText
         android:id="@+id/optionstv2"
         android:layout_width="90dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
-        android:padding="30dp"
+        android:padding="20dp"
         android:layout_marginTop="8dp"
-        android:text="Vegan"
         android:layout_below="@id/optionstv"
-        android:textColor="@color/white"
+        android:textColorHint="@color/black"
+        android:hint="Nut Allergy"
         android:textSize="10dp"
         android:background="@drawable/shape_button3"/>
+
 
 
 
