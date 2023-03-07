@@ -41,11 +41,9 @@ class SearchFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-            // Inflate the layout for this fragment
 
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,13 +51,10 @@ class SearchFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
-        loadRestaurants()
-
         binding.searchet.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 TODO("Not yet implemented")
             }
-
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //called when user is typing
                 try{
@@ -75,11 +70,13 @@ class SearchFragment : Fragment() {
             }
 
         })
+        loadRestaurants()
         return binding.root
     }
 
+
     private fun loadRestaurants() {
-        //initialise array
+        //initalise arry
         restaurantArrayList = ArrayList()
 
         //get from db

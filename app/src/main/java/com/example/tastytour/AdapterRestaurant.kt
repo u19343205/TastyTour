@@ -43,9 +43,6 @@ class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant
         val timestamp = model.timestamp
 
         holder.resTV.text = restaurant
-        holder.saveButton.setOnClickListener{
-
-        }
     }
     override fun getItemCount(): Int {
         return restaurantArrayList.size // how many in list
@@ -53,7 +50,6 @@ class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant
 
     inner class HolderRestaurant(itemView: View): RecyclerView.ViewHolder(itemView){
         var resTV:TextView = binding.resTv
-        var saveButton:ImageButton = binding.saveButton
 
     }
 

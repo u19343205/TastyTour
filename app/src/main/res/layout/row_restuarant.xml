@@ -14,14 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="40dp">
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/logo"
-            android:paddingEnd="10dp"/>
 
         <TextView
             android:id="@+id/resTv"
@@ -29,16 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="Restaurants"
+            android:textSize="20dp"
             android:textColor="@color/purple_200"/>
 
-        <ImageButton
-            android:id="@+id/saveButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="200dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/baseline_favorite_border_24"
-            android:paddingEnd="10dp"/>
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
