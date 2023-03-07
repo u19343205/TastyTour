@@ -4,27 +4,32 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastytour.databinding.RowRestuarantBinding
 
-class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>{
+class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>, Filterable{
 
     private val context: Context
-    private val restaurantArrayList: ArrayList<ModelRestaurant>
+    public var restaurantArrayList: ArrayList<ModelRestaurant>
+    private var filterList: ArrayList<ModelRestaurant>
+
+    private var filter: FilterRestaurant? = null
 
     private lateinit var binding: RowRestuarantBinding
 
     constructor(context: Context, restaurantArrayList: ArrayList<ModelRestaurant>) {
         this.context = context
         this.restaurantArrayList = restaurantArrayList
+        this.filterList = restaurantArrayList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderRestaurant {
        //inflate bin rowresturant xml
         binding = RowRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
-
         return HolderRestaurant(binding.root)
     }
 
@@ -50,9 +55,14 @@ class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant
         var resTV:TextView = binding.resTv
         var saveButton:ImageButton = binding.saveButton
 
-
     }
 
+    override fun getFilter(): Filter {
+        if (filter == null){
+            filter = FilterRestaurant(filterList, this)
+        }
+        return filter as FilterRestaurant
+    }
 
 
 }

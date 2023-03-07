@@ -17,8 +17,15 @@ class AdminActivity : AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.addButton.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+            finish() //
+        }
+
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
+
 
     }
 
