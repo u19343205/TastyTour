@@ -89,7 +89,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/home_restuarant" />
+        tools:listitem="@layout/row2_restuarant" />
 
 </RelativeLayout>
 

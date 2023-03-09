@@ -15,10 +15,19 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        //there is no account for the user
+        //goback
         binding.backButton.setOnClickListener {
             // Move to homepage
             val intent = Intent(this, HomeFragment::class.java)
+            startActivity(intent)
+            finish() //
+
+        }
+
+        //signout
+        binding.signoutButton.setOnClickListener {
+            // Move to homepage
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish() //
 

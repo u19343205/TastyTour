@@ -18,12 +18,12 @@
             android:layout_width="100dp"
             android:layout_height="148dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/darkgrey">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/resImg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </RelativeLayout>
 
@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Restaurant"
+            android:textSize="20dp"
             android:layout_toEndOf="@id/resinfoRL"
             android:textColor="@color/black"/>
 
@@ -41,12 +42,42 @@
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cuisine"
+            android:text="Post Code"
             android:layout_toEndOf="@id/resinfoRL"
             android:layout_below="@id/resTv"
             android:textColor="@color/purple_200"/>
 
+        <ImageButton
+            android:id="@+id/faveButton"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/baseline_favorite_border_24"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/darkgrey"/>
 
+
+        <TextView
+            android:id="@+id/cuisineTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuisine"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/purple_200"/>
+
+        <TextView
+            android:id="@+id/ratingTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.1"
+            android:drawableStart="@drawable/baseline_star_24"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/purple_200"/>
 
 
 

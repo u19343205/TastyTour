@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tastytour.databinding.ActivityAdminBinding
-import com.example.tastytour.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -24,8 +23,16 @@ class AdminActivity : AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //add restaurant
         binding.addButton.setOnClickListener {
             val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+            finish() //
+        }
+
+        //logout button
+        binding.logoutButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish() //
         }
@@ -33,11 +40,6 @@ class AdminActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
         loadRestaurants()
-
-
-
-
-
 
     }
 
@@ -50,8 +52,7 @@ class AdminActivity : AppCompatActivity() {
 
         }
         else{
-            val name = firebaseUser.displayName
-            binding.nameTv.text = name
+
         }
     }
 

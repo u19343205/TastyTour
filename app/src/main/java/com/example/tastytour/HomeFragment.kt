@@ -7,6 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tastytour.databinding.FragmentHomeBinding
+import com.example.tastytour.databinding.FragmentSearchBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +25,10 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    //array list for restaurants
+    private lateinit var restaurantArrayList: ArrayList<ModelRestaurant>
+    //adapter
+    private lateinit var adapterRestaurant: AdapterRestaurant
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -46,10 +55,39 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
+        loadRestaurants()
 
         return binding.root
 
     }
+    private fun loadRestaurants() {
+        //initalise arry
+        restaurantArrayList = ArrayList()
+
+        //get from db
+        val ref = FirebaseDatabase.getInstance().getReference("Restaurants")
+        ref.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                //clear list before starting
+                restaurantArrayList.clear()
+                for (ds in snapshot.children){
+                    val model = ds.getValue(ModelRestaurant::class.java)
+
+                    //add
+                    restaurantArrayList.add(model!!)
+                }
+                //setupadapter
+                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList)
+                //set
+                binding.restaurantsRv.adapter = adapterRestaurant
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 
     companion object {
         /**

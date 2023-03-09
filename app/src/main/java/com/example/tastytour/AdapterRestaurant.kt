@@ -4,10 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastytour.databinding.RowRestuarantBinding
 
@@ -41,15 +38,30 @@ class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant
         val restaurant = model.restaurant
         val uid = model.uid
         val timestamp = model.timestamp
+        var location = model.location
+        var rating = model.rating
+        var cuisine = model.cuisine
+        val imageUrl = model.imageUrl
 
-        holder.resTV.text = restaurant
+
+        holder.resTv.text = restaurant
+        holder.locationTv.text = location
+        holder.ratingTv.text = rating
+        holder.cuisineTv.text = cuisine
+
+
     }
     override fun getItemCount(): Int {
         return restaurantArrayList.size // how many in list
     }
 
     inner class HolderRestaurant(itemView: View): RecyclerView.ViewHolder(itemView){
-        var resTV:TextView = binding.resTv
+        var resTv:TextView = binding.resTv
+        var locationTv: TextView = binding.locationTv
+        var ratingTv: TextView = binding.ratingTv
+        var cuisineTv: TextView = binding.cuisineTv
+
+
 
     }
 

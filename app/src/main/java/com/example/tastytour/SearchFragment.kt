@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.example.tastytour.databinding.FragmentSearchBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -92,7 +91,7 @@ class SearchFragment : Fragment() {
                     restaurantArrayList.add(model!!)
                 }
                 //setupadapter
-                adapterRestaurant = AdapterRestaurant(requireContext(),restaurantArrayList)
+                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList)
                 //set
                 binding.restaurantsRv.adapter = adapterRestaurant
             }
