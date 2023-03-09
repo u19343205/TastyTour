@@ -1,10 +1,12 @@
 package com.example.tastytour
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.tastytour.databinding.ActivityAddBinding
+import com.example.tastytour.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -31,6 +33,14 @@ class AddActivity : AppCompatActivity() {
 
         binding.submitButton.setOnClickListener{
             validateData()
+        }
+        //there is no account for the user
+        binding.backButton.setOnClickListener {
+            // Move to homepage
+            val intent = Intent(this, AdminActivity::class.java)
+            startActivity(intent)
+            finish() //
+
         }
     }
 

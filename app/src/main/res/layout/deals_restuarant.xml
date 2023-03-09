@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="250dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPadding="10dp"
     app:cardUseCompatPadding="true"
@@ -9,23 +9,84 @@
     app:cardElevation="0dp"
     app:cardBackgroundColor="@color/white">
 
-    <LinearLayout
-        android:layout_width="369dp"
-        android:layout_height="238dp"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="46dp">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/resinfoRL"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/darkgrey">
+
+            <ImageView
+                android:id="@+id/resImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_whatshot_24"
+                android:alpha="0.2"
+                android:scaleType="fitXY" />
+
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/resTv"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restaurant"
+            android:textSize="20dp"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/locationTv"
+            style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Restaurants"
-            android:textColor="@color/purple_200"
-            android:textSize="20dp" />
+            android:text="Post Code"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:layout_below="@id/resTv"
+            android:textColor="@color/purple_200"/>
+
+        <TextView
+            android:id="@+id/priceTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="££"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/darkgrey"/>
 
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/cusineTv"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuisine"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/purple_200"/>
+
+        <TextView
+            android:id="@+id/discountTv"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30% OFF"
+            android:drawableStart="@drawable/baseline_attach_money_24"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/purple_200"/>
+
+
+
+    </RelativeLayout>
+
+
 </androidx.cardview.widget.CardView>

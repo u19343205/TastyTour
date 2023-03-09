@@ -1,32 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="148dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPadding="10dp"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="0dp"
     app:cardBackgroundColor="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="40dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/resinfoRL"
+            android:layout_width="100dp"
+            android:layout_height="148dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/darkgrey">
+
+            <ImageView
+                android:id="@+id/resImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/resTv"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restaurant"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/locationTv"
+            style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Restaurants"
-            android:textSize="20dp"
+            android:text="Cuisine"
+            android:layout_toEndOf="@id/resinfoRL"
+            android:layout_below="@id/resTv"
             android:textColor="@color/purple_200"/>
 
 
 
-    </LinearLayout>
+
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -7,7 +7,9 @@
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="15dp"
     app:cardElevation="0dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardBackgroundColor="@color/white"
+    tools:context=".SavedFragment">
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -38,11 +40,11 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/locationTv"
+            android:id="@+id/datetimeTv"
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Post Code"
+            android:text="Monday 27th March 8PM"
             android:layout_toEndOf="@id/resinfoRL"
             android:layout_below="@id/resTv"
             android:textColor="@color/purple_200"/>
@@ -52,7 +54,7 @@
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/baseline_favorite_border_24"
+            android:drawableStart="@drawable/baseline_check_24"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:textColor="@color/darkgrey"/>
@@ -73,8 +75,8 @@
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4.1"
-            android:drawableStart="@drawable/baseline_star_24"
+            android:text="2"
+            android:drawableStart="@drawable/baseline_person_24_black"
             android:layout_toEndOf="@id/resinfoRL"
             android:layout_alignParentBottom="true"
             android:textColor="@color/purple_200"/>
@@ -82,4 +84,5 @@
 
 
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>
