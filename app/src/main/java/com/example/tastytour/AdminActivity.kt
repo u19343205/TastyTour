@@ -37,12 +37,14 @@ class AdminActivity : AppCompatActivity() {
             finish() //
         }
 
+        //init
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
         loadRestaurants()
 
     }
 
+    //check the user is authorised
     private fun checkUser() {
        val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){

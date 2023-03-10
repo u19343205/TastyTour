@@ -3,6 +3,7 @@ package com.example.tastytour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.example.tastytour.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -12,6 +13,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         //goback
@@ -32,10 +34,13 @@ class ProfileActivity : AppCompatActivity() {
 
         }
 
+        //toggle dark mode
+        binding.darkmode.setOnClickListener {
+            ToggleDarkMode()
+        }
+    }
 
-
-
-
-
+    private fun ToggleDarkMode() {
+        TODO("Not yet implemented")
     }
 }
