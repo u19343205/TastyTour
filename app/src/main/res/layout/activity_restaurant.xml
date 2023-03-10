@@ -1,9 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".RestaurantActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:background="@color/grey"
+        android:src="@drawable/backarrow" />
+
+
+        <TextView
+            android:id="@+id/welcomeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Middleton's"
+            android:textSize="35dp"
+            android:padding="15dp"
+            android:layout_toEndOf="@id/backButton"
+            android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/res3Img"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/welcomeTv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/mid1"
+        android:padding="10dp" />
+
+    <ImageView
+        android:id="@+id/res2Img"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/welcomeTv"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="239dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toEndOf="@id/res3Img"
+        android:background="@drawable/middletons"
+        android:padding="10dp" />
+
+    <ImageView
+        android:id="@+id/res4Img"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/res2Img"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="239dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toEndOf="@id/res3Img"
+        android:background="@drawable/mid2"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All"
+        android:layout_below="@id/res2Img"
+        android:layout_toEndOf="@id/res3Img"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/detailsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details + Location"
+        android:layout_below="@id/res3Img"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/detailsTv"/>
+
+    <TextView
+        android:id="@+id/addressTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 St Martins, Leicester LE1 5DB"
+        android:layout_below="@id/detailsTv"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@drawable/baseline_location_on_24"
+        android:textColor="@color/black"
+        android:layout_marginTop="13dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/menuTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:layout_below="@id/addressTv"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@drawable/baseline_menu_book_24"
+        android:textColor="@color/black"
+        android:layout_marginTop="13dp"
+        android:textSize="20dp"
+        android:onClick="onMenuClick"
+        />
+
+    <TextView
+        android:id="@+id/reviewsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating + Reviews"
+        android:layout_below="@id/menuTv"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/reviewsTv"/>
+
+
+
+
+    <Button
+        android:id="@+id/BookButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:text="Book Now"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textColor="@color/white"/>
+
+
+</RelativeLayout>

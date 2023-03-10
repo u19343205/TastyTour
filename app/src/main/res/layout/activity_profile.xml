@@ -19,7 +19,7 @@
         android:background="@color/grey"
         android:src="@drawable/backarrow" />
 
-    <Button
+    <ImageView
         android:id="@+id/profileutton"
         android:layout_width="150dp"
         android:layout_height="150dp"

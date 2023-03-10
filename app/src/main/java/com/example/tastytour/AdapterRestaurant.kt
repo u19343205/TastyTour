@@ -1,10 +1,12 @@
 package com.example.tastytour
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.tastytour.databinding.RowRestuarantBinding
@@ -39,9 +41,29 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
                 model.isFavorite = !model.isFavorite
                 if (model.isFavorite) {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
+                    Toast.makeText(binding.root.context, "Added to favorites", Toast.LENGTH_SHORT).show()
+
                 } else {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_border_24)
+                    Toast.makeText(binding.root.context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+
                 }
+            }
+            binding.root.setOnClickListener {
+                val destinationFragment = SavedFragment()
+                // Pass data for the selected card as arguments to the destination fragment
+                val bundle = Bundle().apply {
+                    putString("restaurant", model.restaurant)
+                    putString("location", model.location)
+                    // add more data if needed
+                }
+                destinationFragment.arguments = bundle
+                // Navigate to the destination fragment
+
+                val transaction = (binding.root.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.restaurantsRv, destinationFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
 
         } else if (layoutType == 2) {
@@ -54,9 +76,29 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
                 model.isFavorite = !model.isFavorite
                 if (model.isFavorite) {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
+                    Toast.makeText(binding.root.context, "Added to favorites", Toast.LENGTH_SHORT).show()
+
                 } else {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_border_24)
+                    Toast.makeText(binding.root.context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+
                 }
+            }
+            binding.root.setOnClickListener {
+                val destinationFragment = SavedFragment()
+                // Pass data for the selected card as arguments to the destination fragment
+                val bundle = Bundle().apply {
+                    putString("restaurant", model.restaurant)
+                    putString("location", model.location)
+                    // add more data if needed
+                }
+                destinationFragment.arguments = bundle
+                // Navigate to the destination fragment
+
+                val transaction = (binding.root.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.restaurantsRv, destinationFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
         }
         else if (layoutType == 3) {
