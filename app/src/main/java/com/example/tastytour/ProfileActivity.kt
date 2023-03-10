@@ -3,7 +3,6 @@ package com.example.tastytour
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tastytour.databinding.ActivityLoginBinding
 import com.example.tastytour.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {

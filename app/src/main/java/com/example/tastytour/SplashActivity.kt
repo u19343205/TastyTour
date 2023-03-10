@@ -6,7 +6,6 @@ import android.os.Handler
 import android.content.Intent
 import com.example.tastytour.databinding.ActivitySplashBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         //delay 2 seconds after running
         Handler().postDelayed(Runnable{
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }, 2000)
 
     }

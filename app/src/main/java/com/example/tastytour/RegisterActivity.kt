@@ -6,10 +6,8 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.telephony.mbms.DownloadProgressListener
 import android.util.Patterns
 import android.widget.Toast
-import com.example.tastytour.databinding.ActivityMainBinding
 import com.example.tastytour.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

@@ -1,6 +1,7 @@
 package com.example.tastytour
 
 import android.widget.Filter
+
 class FilterRestaurant: Filter{
 
     private var filterList: ArrayList<ModelRestaurant>

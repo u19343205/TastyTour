@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.tastytour.*
 import com.example.tastytour.databinding.ActivityHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 

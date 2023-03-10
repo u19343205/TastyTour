@@ -52,7 +52,7 @@ class SearchFragment : Fragment() {
 
         binding.searchet.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+
             }
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //called when user is typing
@@ -65,7 +65,6 @@ class SearchFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
             }
 
         })
