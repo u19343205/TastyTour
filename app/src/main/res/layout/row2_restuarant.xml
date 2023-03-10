@@ -56,7 +56,7 @@
             android:textColor="@color/purple_200"/>
 
         <TextView
-            android:id="@+id/ratingsTv"
+            android:id="@+id/ratingTv"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

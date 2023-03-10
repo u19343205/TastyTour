@@ -55,6 +55,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
+
         loadRestaurants()
 
         return binding.root
@@ -77,7 +78,7 @@ class HomeFragment : Fragment() {
                     restaurantArrayList.add(model!!)
                 }
                 //setupadapter
-                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList)
+                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList, layoutType = 1)
                 //set
                 binding.restaurantsRv.adapter = adapterRestaurant
             }

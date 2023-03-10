@@ -73,7 +73,7 @@ class AdminActivity : AppCompatActivity() {
                     restaurantArrayList.add(model!!)
                 }
                 //setupadapter
-                adapterRestaurant = AdapterRestaurant(this@AdminActivity,restaurantArrayList)
+                adapterRestaurant = AdapterRestaurant(this@AdminActivity,restaurantArrayList, layoutType = 2)
                 //set
                 binding.restaurantsRv.adapter = adapterRestaurant
             }

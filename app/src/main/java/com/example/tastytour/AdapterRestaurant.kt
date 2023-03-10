@@ -6,71 +6,57 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.example.tastytour.databinding.RowRestuarantBinding
+import com.example.tastytour.databinding.Row2RestuarantBinding
+class AdapterRestaurant(private val context: Context, private var restaurantArrayList: ArrayList<ModelRestaurant>, private val layoutType: Int) : RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>(), Filterable {
 
-class AdapterRestaurant :RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>, Filterable{
-
-    private val context: Context
-    public var restaurantArrayList: ArrayList<ModelRestaurant>
-    private var filterList: ArrayList<ModelRestaurant>
-
+    private var filterList: ArrayList<ModelRestaurant> = restaurantArrayList
     private var filter: FilterRestaurant? = null
 
-    private lateinit var binding: RowRestuarantBinding
-
-    constructor(context: Context, restaurantArrayList: ArrayList<ModelRestaurant>) {
-        this.context = context
-        this.restaurantArrayList = restaurantArrayList
-        this.filterList = restaurantArrayList
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderRestaurant {
-       //inflate bin rowresturant xml
-        binding = RowRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
-        return HolderRestaurant(binding.root)
+        val binding: ViewBinding = when (layoutType) {
+            1 -> RowRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
+            2 -> Row2RestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
+            else -> throw IllegalArgumentException("Invalid layout type provided: $layoutType")
+        }
+        return HolderRestaurant(binding.root, binding)
     }
-
 
     override fun onBindViewHolder(holder: HolderRestaurant, position: Int) {
-      // get data, set data, handle clicks
         val model = restaurantArrayList[position]
-        val id = model.id
-        val restaurant = model.restaurant
-        val uid = model.uid
-        val timestamp = model.timestamp
-        var location = model.location
-        var rating = model.rating
-        var cuisine = model.cuisine
-        val imageUrl = model.imageUrl
-
-
-        holder.resTv.text = restaurant
-        holder.locationTv.text = location
-        holder.ratingTv.text = rating
-        holder.cuisineTv.text = cuisine
-
-
+        // set data to views
+        if (layoutType == 1) {
+            val binding = holder.binding as RowRestuarantBinding
+            binding.resTv.text = model.restaurant
+            binding.locationTv.text = model.location
+            binding.ratingTv.text = model.rating
+            binding.cuisineTv.text = model.cuisine
+        } else if (layoutType == 2) {
+            val binding = holder.binding as Row2RestuarantBinding
+            binding.resTv.text = model.restaurant
+            binding.locationTv.text = model.location
+            binding.ratingTv.text = model.rating
+            binding.cuisineTv.text = model.cuisine
+        }
     }
+
     override fun getItemCount(): Int {
-        return restaurantArrayList.size // how many in list
+        return restaurantArrayList.size
     }
 
-    inner class HolderRestaurant(itemView: View): RecyclerView.ViewHolder(itemView){
-        var resTv:TextView = binding.resTv
-        var locationTv: TextView = binding.locationTv
-        var ratingTv: TextView = binding.ratingTv
-        var cuisineTv: TextView = binding.cuisineTv
-
-
-
+    fun setData(data: ArrayList<ModelRestaurant>) {
+        restaurantArrayList = data
+        notifyDataSetChanged()
     }
+
 
     override fun getFilter(): Filter {
-        if (filter == null){
+        if (filter == null) {
             filter = FilterRestaurant(filterList, this)
         }
-        return filter as FilterRestaurant
+        return filter!!
     }
 
-
+    inner class HolderRestaurant(itemView: View, val binding: ViewBinding) : RecyclerView.ViewHolder(itemView)
 }

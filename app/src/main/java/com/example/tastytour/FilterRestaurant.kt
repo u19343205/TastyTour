@@ -25,7 +25,7 @@ class FilterRestaurant: Filter{
             constraint = constraint.toString().uppercase()
             val filteredModels: ArrayList<ModelRestaurant> = ArrayList()
             for (i in 0 until filterList.size) {
-                if (filterList[i].restaurant.uppercase().contains(constraint)) {
+                if (filterList[i].restaurant.uppercase().startsWith(constraint)) {
                     filteredModels.add(filterList[i])
 
                 }
@@ -42,10 +42,7 @@ class FilterRestaurant: Filter{
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-        adapterRestaurant.restaurantArrayList = results.values as ArrayList<ModelRestaurant>
-
-        //notify
-        adapterRestaurant.notifyDataSetChanged()
-
+        adapterRestaurant.setData(results.values as ArrayList<ModelRestaurant>)
     }
+
 }

@@ -90,7 +90,7 @@ class SearchFragment : Fragment() {
                     restaurantArrayList.add(model!!)
                 }
                 //setupadapter
-                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList)
+                adapterRestaurant = AdapterRestaurant(requireContext(), restaurantArrayList, layoutType = 2)
                 //set
                 binding.restaurantsRv.adapter = adapterRestaurant
             }
