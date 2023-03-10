@@ -25,10 +25,35 @@ class RestaurantActivity : AppCompatActivity() {
         }
         binding.menuTv.setOnClickListener {
             onMenuClick()
-
-
+        }
+        binding.instaIm.setOnClickListener {
+            gotoInsta()
+        }
+        binding.tiktokIm.setOnClickListener {
+            gotoTiktoK()
+        }
+        binding.websiteIm.setOnClickListener {
+            gotoWebsite()
         }
 
+    }
+
+    private fun gotoTiktoK() {
+        val url = "https://www.tiktok.com/@middletons_shg?_t=8aXKa8BmStK&_r=1"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    private fun gotoWebsite() {
+        val url = "https://www.middletons-shg.co.uk/"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    private fun gotoInsta() {
+        val url = "https://instagram.com/middletons_shg?igshid=YmMyMTA2M2Y="
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     private fun onMenuClick() {
