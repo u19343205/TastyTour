@@ -4,8 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.tastytour.databinding.ActivityProfileBinding
+import android.view.View
 import com.example.tastytour.databinding.ActivityRestaurantBinding
 
 class RestaurantActivity : AppCompatActivity() {
@@ -17,7 +16,6 @@ class RestaurantActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.addressTv.setOnClickListener {
-            // Replace the "1600 Amphitheatre Parkway, Mountain View, CA" with your desired location
             val address = binding.addressTv.text
             val locationUri = Uri.parse("geo:0,0?q=$address")
             val mapIntent = Intent(Intent.ACTION_VIEW, locationUri)
@@ -25,5 +23,17 @@ class RestaurantActivity : AppCompatActivity() {
             startActivity(mapIntent)
 
         }
+        binding.menuTv.setOnClickListener {
+            onMenuClick()
+
+
+        }
+
+    }
+
+    private fun onMenuClick() {
+        val url = "https://www.middletons-shg.co.uk/our-menu/leicester-menu/"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 }

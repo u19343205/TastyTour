@@ -119,7 +119,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="13dp"
         android:textSize="20dp"
-        android:onClick="onMenuClick"
+        android:onClick="@{viewModel::onMenuClick}"
         />
 
     <TextView
