@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.tastytour.databinding.RowRestuarantBinding
 import com.example.tastytour.databinding.Row2RestuarantBinding
+import com.example.tastytour.databinding.DealsRestuarantBinding
 class AdapterRestaurant(private val context: Context, private var restaurantArrayList: ArrayList<ModelRestaurant>, private val layoutType: Int) : RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>(), Filterable {
 
     private var filterList: ArrayList<ModelRestaurant> = restaurantArrayList
@@ -18,6 +19,7 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
         val binding: ViewBinding = when (layoutType) {
             1 -> RowRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
             2 -> Row2RestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
+            3 -> DealsRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
             else -> throw IllegalArgumentException("Invalid layout type provided: $layoutType")
         }
         return HolderRestaurant(binding.root, binding)
@@ -25,6 +27,7 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
 
     override fun onBindViewHolder(holder: HolderRestaurant, position: Int) {
         val model = restaurantArrayList[position]
+
         // set data to views
         if (layoutType == 1) {
             val binding = holder.binding as RowRestuarantBinding
@@ -32,11 +35,34 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
             binding.locationTv.text = model.location
             binding.ratingTv.text = model.rating
             binding.cuisineTv.text = model.cuisine
+            binding.faveTv.setOnClickListener {
+                model.isFavorite = !model.isFavorite
+                if (model.isFavorite) {
+                    binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
+                } else {
+                    binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_border_24)
+                }
+            }
+
         } else if (layoutType == 2) {
             val binding = holder.binding as Row2RestuarantBinding
             binding.resTv.text = model.restaurant
             binding.locationTv.text = model.location
             binding.ratingTv.text = model.rating
+            binding.cuisineTv.text = model.cuisine
+            binding.faveTv.setOnClickListener {
+                model.isFavorite = !model.isFavorite
+                if (model.isFavorite) {
+                    binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
+                } else {
+                    binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_border_24)
+                }
+            }
+        }
+        else if (layoutType == 3) {
+            val binding = holder.binding as DealsRestuarantBinding
+            binding.resTv.text = model.restaurant
+            binding.locationTv.text = model.location
             binding.cuisineTv.text = model.cuisine
         }
     }

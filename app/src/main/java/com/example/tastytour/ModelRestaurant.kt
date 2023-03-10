@@ -11,7 +11,7 @@ class ModelRestaurant {
     var timestamp:Long = 0
     var uid:String = ""
     var imageUrl: String = ""
-    var isFavorite: Boolean = true // Add this property
+    var isFavorite: Boolean = false // Add this property
 
 
 

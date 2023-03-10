@@ -17,7 +17,7 @@ class ProfileActivity : AppCompatActivity() {
         //goback
         binding.backButton.setOnClickListener {
             // Move to homepage
-            val intent = Intent(this, HomeFragment::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish() //
 
