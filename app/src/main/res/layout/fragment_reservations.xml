@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/grey"
-    tools:context=".ReservationsFragment">
+    tools:context=".fragments.ReservationsFragment">
 
     <TextView
         android:id="@+id/savedTv"

@@ -1,4 +1,4 @@
-package com.example.tastytour
+package com.example.tastytour.adapters
 
 import android.content.Context
 import android.os.Bundle
@@ -9,10 +9,17 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.example.tastytour.filters.FilterRestaurant
+import com.example.tastytour.models.ModelRestaurant
+import com.example.tastytour.R
 import com.example.tastytour.databinding.RowRestuarantBinding
 import com.example.tastytour.databinding.Row2RestuarantBinding
 import com.example.tastytour.databinding.DealsRestuarantBinding
-class AdapterRestaurant(private val context: Context, private var restaurantArrayList: ArrayList<ModelRestaurant>, private val layoutType: Int) : RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>(), Filterable {
+import com.example.tastytour.fragments.SavedFragment
+
+class AdapterRestaurant(private val context: Context, private var restaurantArrayList:
+ArrayList<ModelRestaurant>, private val layoutType: Int) :
+    RecyclerView.Adapter<AdapterRestaurant.HolderRestaurant>(), Filterable {
 
     // Initialize variables
     private var filterList: ArrayList<ModelRestaurant> = restaurantArrayList
@@ -22,9 +29,12 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderRestaurant {
         // Inflate the appropriate view based on the layout type provided
         val binding: ViewBinding = when (layoutType) {
-            1 -> RowRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
-            2 -> Row2RestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
-            3 -> DealsRestuarantBinding.inflate(LayoutInflater.from(context), parent, false)
+            1 -> RowRestuarantBinding.inflate(LayoutInflater.from(context), parent
+                , false)
+            2 -> Row2RestuarantBinding.inflate(LayoutInflater.from(context), parent
+                , false)
+            3 -> DealsRestuarantBinding.inflate(LayoutInflater.from(context), parent
+                , false)
             else -> throw IllegalArgumentException("Invalid layout type provided: $layoutType")
         }
         // Return a new instance of ViewHolder
@@ -48,7 +58,8 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
                 model.isFavorite = !model.isFavorite
                 if (model.isFavorite) {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
-                    Toast.makeText(binding.root.context, "Added to favorites", Toast.LENGTH_SHORT)
+                    Toast.makeText(binding.root.context, "Added to favorites",
+                        Toast.LENGTH_SHORT)
                         .show()
                 } else {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_border_24)
@@ -72,7 +83,8 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
                 destinationFragment.arguments = bundle
                 // Navigate to the destination fragment
                 val transaction =
-                    (binding.root.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    (binding.root.context as AppCompatActivity).supportFragmentManager.
+                    beginTransaction()
                 transaction.replace(R.id.restaurantsRv, destinationFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
@@ -87,7 +99,8 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
                 model.isFavorite = !model.isFavorite
                 if (model.isFavorite) {
                     binding.faveTv.setBackgroundResource(R.drawable.baseline_favorite_24)
-                    Toast.makeText(binding.root.context, "Added to favorites", Toast.LENGTH_SHORT)
+                    Toast.makeText(binding.root.context, "Added to favorites",
+                        Toast.LENGTH_SHORT)
                         .show()
 
                 } else {
@@ -113,7 +126,8 @@ class AdapterRestaurant(private val context: Context, private var restaurantArra
 
                 //find Fragment Manager and starts a transaction.
                 val transaction =
-                    (binding.root.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    (binding.root.context as AppCompatActivity).supportFragmentManager.
+                    beginTransaction()
                 // replace the current RecyclerView with the details fragment.
                 transaction.replace(R.id.restaurantsRv, destinationFragment)
                 // add current fragment to the back stack.

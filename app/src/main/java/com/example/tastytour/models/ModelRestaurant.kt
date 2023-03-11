@@ -1,5 +1,6 @@
-package com.example.tastytour
+package com.example.tastytour.models
 
+// A class representing a restaurant model with various properties
 class ModelRestaurant {
 
     val restaurantId: String = ""
@@ -11,14 +12,13 @@ class ModelRestaurant {
     var timestamp:Long = 0
     var uid:String = ""
     var imageUrl: String = ""
-    var isFavorite: Boolean = false // Add this property
-
-
+    // A flag indicating whether the restaurant is a favorite or not
+    var isFavorite: Boolean = false
 
     //empty constructor
     constructor()
 
-    //parameterised constructor
+    // A parameterized constructor to initialise some of the properties
     constructor(id: String, restaurant: String, timestamp: Long, uid: String) {
         this.id = id
         this.restaurant = restaurant

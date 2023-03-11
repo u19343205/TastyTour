@@ -1,4 +1,4 @@
-package com.example.tastytour
+package com.example.tastytour.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,61 +6,52 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.tastytour.R
 import com.example.tastytour.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var progressDialog: ProgressDialog
+    private lateinit var binding: ActivityLoginBinding // View binding object for login activity
+    private lateinit var firebaseAuth: FirebaseAuth // Firebase authentication object
+    private lateinit var progressDialog: ProgressDialog // Progress dialog to show loading messages
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) // Set layout file for activity
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.root) // Set root view for the activity
 
-        //initialise firebase
+        // Initialize Firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance()
 
-        //initialise progress dialog
+        // Initialize progress dialog and set properties
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please Wait")
         progressDialog.setCanceledOnTouchOutside(false)
 
-        //there is no account for the user
+        // Open register activity when user doesn't have an account
         binding.NoAccount.setOnClickListener {
-            // Move to homepage
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-            finish() //
-
+            finish() // Finish current activity
         }
 
-
-        //login
-        //steps:
-        //1. input data
-        //2. validate data
-        //3. login - firebase auth
+        // Validate and log in user when login button is clicked
         binding.loginButton.setOnClickListener {
             validateData()
         }
-
-
     }
-
     private var email = ""
     private var password = ""
+
     private fun validateData() {
-        //input data
+        // Get user input
         email = binding.emailEt.text.toString().trim()
         password = binding.passwordEt.text.toString().trim()
 
-        //validate
+        // Validate user input
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show()
 
@@ -68,64 +59,58 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter Password", Toast.LENGTH_SHORT).show()
 
         } else {
-            LoginUser()
+            LoginUser() // Log in user if input is valid
         }
     }
 
     private fun LoginUser() {
         progressDialog.setMessage("Logging In..")
         progressDialog.show()
+
+        // Sign in user using Firebase authentication
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                // Move to homepage
-                //show progress
+                // If successful, check user type and move to corresponding activity
                 checkUser()
             }
-            .addOnFailureListener{ e->
-                //failed
+            .addOnFailureListener { e ->
+                // If login fails, dismiss progress dialog and show error message
                 progressDialog.dismiss()
-                Toast.makeText(this,"Login failed due to ${e.message}",Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Login failed due to ${e.message}",
+                    Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun checkUser() {
         progressDialog.setMessage("Checking User..")
 
+        // Get current Firebase user and check their user type
         val firebaseUser = firebaseAuth.currentUser!!
-
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {}
 
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-                override fun onDataChange(snapshot: DataSnapshot){
+                override fun onDataChange(snapshot: DataSnapshot) {
                     progressDialog.dismiss()
                     val userType = snapshot.child("userType").value
-                    if(userType =="user"){
-
-                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                    if (userType == "user") {
+                        // Move to home activity for regular users
+                        val intent = Intent(this@LoginActivity, HomeActivity::class
+                            .java)
                         startActivity(intent)
-                        finish() //
-
-                    }
-                    else if (userType =="admin"){
-
-                        val intent = Intent(this@LoginActivity, AdminActivity::class.java)
+                        finish() // Finish current activity
+                    } else if (userType == "admin") {
+                        // Move to admin activity for admin users
+                        val intent = Intent(this@LoginActivity, AdminActivity::class
+                            .java)
                         startActivity(intent)
-                        finish() //
-
+                        finish() // Finish current activity
                     }
-
                 }
-
             })
-
     }
-    }
-
+}
 
 
 

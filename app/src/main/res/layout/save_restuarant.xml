@@ -9,7 +9,7 @@
     app:cardCornerRadius="15dp"
     app:cardElevation="0dp"
     app:cardBackgroundColor="@color/white"
-    tools:context=".SavedFragment">
+    tools:context=".fragments.SavedFragment">
 
 
     <RelativeLayout

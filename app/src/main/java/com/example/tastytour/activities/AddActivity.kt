@@ -1,4 +1,4 @@
-package com.example.tastytour
+package com.example.tastytour.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.app.Activity
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.tastytour.R
 import com.example.tastytour.databinding.ActivityAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -32,10 +33,10 @@ class AddActivity : AppCompatActivity() {
         binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initializing Firebase
+        // Initialising Firebase
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Initializing Progress Dialog
+        // Initialising Progress Dialog
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please Wait")
         progressDialog.setCanceledOnTouchOutside(false)
@@ -60,7 +61,7 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-    // Initializing the variables required for addRestaurant() function
+    // Initialising the variables required for addRestaurant() function
     private var restaurant = ""
     private var location = ""
     private var cuisine = ""
@@ -75,7 +76,8 @@ class AddActivity : AppCompatActivity() {
             imageUri = data.data
             Glide.with(this).load(imageUri).into(imageView)
             imageUrl =
-                "https://firebasestorage.googleapis.com/v0/b/my-app.appspot.com/o/images%2F${imageUri?.lastPathSegment}?alt=media"
+                "https://firebasestorage.googleapis.com/v0/b/my-app.appspot.com/o/images%2F" +
+                        "${imageUri?.lastPathSegment}?alt=media"
         }
     }
 
@@ -86,7 +88,8 @@ class AddActivity : AppCompatActivity() {
         cuisine = binding.cuisineET.text.toString().trim()
         rating = binding.ratingsET.text.toString().trim()
         imageUrl =
-            "https://firebasestorage.googleapis.com/v0/b/my-app.appspot.com/o/images%2F${imageUri?.lastPathSegment}?alt=media"
+            "https://firebasestorage.googleapis.com/v0/b/my-app.appspot.com/o/images%2F" +
+                    "${imageUri?.lastPathSegment}?alt=media"
 
         if (restaurant.isEmpty()) {
             Toast.makeText(this, "Enter Restaurant", Toast.LENGTH_SHORT).show()
@@ -113,13 +116,15 @@ class AddActivity : AppCompatActivity() {
                         }
                         .addOnFailureListener {
                             progressDialog.dismiss()
-                            Toast.makeText(this, "Failed to get download URL", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "Failed to get download URL",
+                                Toast.LENGTH_SHORT)
                                 .show()
                         }
                 }
                 .addOnFailureListener {
                     progressDialog.dismiss()
-                    Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT)
+                        .show()
                 }
         }
     }

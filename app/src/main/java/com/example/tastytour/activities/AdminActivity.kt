@@ -1,8 +1,11 @@
-package com.example.tastytour
+package com.example.tastytour.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tastytour.adapters.AdapterRestaurant
+import com.example.tastytour.models.ModelRestaurant
+import com.example.tastytour.R
 import com.example.tastytour.databinding.ActivityAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -75,7 +78,8 @@ class AdminActivity : AppCompatActivity() {
                     restaurantArrayList.add(model!!)
                 }
                 //setupadapter
-                adapterRestaurant = AdapterRestaurant(this@AdminActivity,restaurantArrayList, layoutType = 2)
+                adapterRestaurant = AdapterRestaurant(this@AdminActivity,restaurantArrayList
+                    , layoutType = 2)
                 //set
                 binding.restaurantsRv.adapter = adapterRestaurant
             }

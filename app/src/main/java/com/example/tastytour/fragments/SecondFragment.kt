@@ -1,11 +1,12 @@
-package com.example.tastytour
+package com.example.tastytour.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.tastytour.R
 import com.example.tastytour.databinding.FragmentSecondBinding
 
 /**
