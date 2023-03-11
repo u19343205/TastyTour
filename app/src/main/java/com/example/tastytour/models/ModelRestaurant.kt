@@ -1,7 +1,12 @@
 package com.example.tastytour.models
 
+import com.example.tastytour.databinding.FragmentSavedBinding
+
 // A class representing a restaurant model with various properties
 class ModelRestaurant {
+    fun favoriteButtonClickListener(fragmentSavedBinding: FragmentSavedBinding) {
+        TODO("Not yet implemented")
+    }
 
     val restaurantId: String = ""
     var id:String = ""
@@ -30,6 +35,7 @@ class ModelRestaurant {
         this.imageUrl = imageUrl
     }
 
+    constructor(p0: Any, p1: Any, p2: Any)
 
 
 }

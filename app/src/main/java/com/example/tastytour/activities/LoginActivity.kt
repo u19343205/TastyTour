@@ -15,6 +15,11 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding // View binding object for login activity
     private lateinit var firebaseAuth: FirebaseAuth // Firebase authentication object
+
+    // Public getter method to access firebaseAuth
+    fun getFirebaseAuth(): FirebaseAuth {
+        return firebaseAuth
+    }
     private lateinit var progressDialog: ProgressDialog // Progress dialog to show loading messages
 
     override fun onCreate(savedInstanceState: Bundle?) {
