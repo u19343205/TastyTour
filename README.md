@@ -15,6 +15,7 @@ TastyTour uses Firebase as its back-end infrastructure for storing restaurant da
   -Firebase Crashlytics: Provides developers with crash reports to identify and fix any issues that arise during development or after deployment.
 
 For more information on how Firebase can be used as a backend for mobile applications, please visit the [Firebase Website](https://firebase.google.com/)
+ 
 
 
 # Dependencies list
